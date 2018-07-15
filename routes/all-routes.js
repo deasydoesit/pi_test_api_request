@@ -98,5 +98,40 @@ module.exports = function(app) {
         .catch(function(err) {
             res.json(err);
         });
-    })
+    });
+
+    app.get("/note/:id", function(req, res) {
+        db.Post.findById({_id: req.params.id})
+            .populate("note")
+            .then(function(dbNote) {
+                res.json(dbNote);
+            })
+            .catch(function(err) {
+                res.json(err);
+            });
+    });
+
+    app.post("/note/:id", function(req, res) {
+        db.Note.create(req.body)
+        .then(function(dbNote) {
+          return db.Post.findOneAndUpdate( {_id: req.params.id}, {note: dbNote._id}, { new: true });
+        })
+        .then(function(dbPost) {
+          res.json(dbPost);
+        })
+        .catch(function(err) {
+          res.json(err);
+        });
+    });
+
+    app.post("/noteupdate/:id", function(req, res) {
+        console.log(req.body);
+        db.Note.findOneAndUpdate( {_id: req.params.id}, {title: req.body.title, body: req.body.body})
+        .then(function(dbPost) {
+          res.json(dbPost);
+        })
+        .catch(function(err) {
+          res.json(err);
+        });
+    });
 }

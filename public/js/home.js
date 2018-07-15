@@ -1,10 +1,11 @@
 function displayResults(results) {
 
-    if($(".nothing").length) {
+    if ($(".nothing").length) {
         $(".nothing").css("display", "none");
     }
+
     var container = $("#results");
-    var counter = 1;
+    var mediary = $("<div>");
 
     results.forEach( function(element) { 
         var row = $("<div>").addClass("row res-item");
@@ -16,9 +17,8 @@ function displayResults(results) {
 
         colBtns.append(link).append(save);
         row.append(colContent).append(colBtns);
-        container.prepend(row);
-
-        counter++;
+        mediary.append(row)
+        container.prepend(mediary);
     });
 }
 
@@ -47,12 +47,6 @@ function getUrl(btn) { // submit post request incorporating user search
 $(document).ready(function () {
 
     $("#jumbo").on("click", function(event) {
-        event.preventDefault();
-        var btn = $(this).attr("id");
-        getUrl(btn);
-    });
-
-    $("#nav").on("click", function(event) {
         event.preventDefault();
         var btn = $(this).attr("id");
         getUrl(btn);

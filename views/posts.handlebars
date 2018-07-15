@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="/">Reddit Scrape</a>
+  <a class="navbar-brand" href="/">Reddit Scrape</a> 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -26,17 +26,52 @@
     </div>
   </div>
 </div>
-<div class="modal fade" id="saved" tabindex="-1" role="dialog" aria-labelledby="save" aria-hidden="true">
+<div class="modal fade" id="createNote" tabindex="-1" role="dialog" aria-labelledby="note" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="save">Saved!</h5>
+        <h5 class="modal-title" id="note">Add a Note!</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body center-content">
-        <p id="modal-save"></p>
+        <form>
+            <div class="form-group">
+                <input type="text" class="form-control" id="title" placeholder="Title">
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" id="body" rows="3" placeholder="Enter Your Note Here"></textarea>
+            </div>
+            <div class="form-group">
+                <button id="submitNote" type="submit" class="btn btn-primary" data-postId="">Submit</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="viewNote" tabindex="-1" role="dialog" aria-labelledby="vnote" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="vnote">Your Note!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body center-content">
+        <form>
+            <div class="form-group">
+                <input type="text" class="form-control" id="vtitle" placeholder="Title">
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" id="vbody" rows="3" placeholder="Enter Your Note Here"></textarea>
+            </div>
+            <div class="form-group">
+                <button id="updateNote" type="submit" class="btn btn-primary" data-updateId="">Update</button>
+            </div>
+        </form>
       </div>
     </div>
   </div>
@@ -54,7 +89,7 @@
           <div class="col-sm-8">{{title}}</div>
           <div class="col-sm-4">
             <a class="btn btn-primary" href="{{link}}" target="_blank">Link</a>
-            <button class="btn btn-warning give-space note" data-title="{{title}}">Add Note</button>
+            <button class="btn btn-warning give-space note" data-id="{{_id}}">Note</button>
             <button class="btn btn-danger give-space delete" data-title="{{title}}">Delete</button>
           </div>
         </div>
