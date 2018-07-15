@@ -1,1 +1,69 @@
-<h1>Posts Test</h1>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/">Reddit Scrape</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/posts">Saved Posts</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="scraped" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="scraped">Scraped Posts!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body center-content">
+        <p id="modal-para"></p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="saved" tabindex="-1" role="dialog" aria-labelledby="save" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="save">Saved!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body center-content">
+        <p id="modal-save"></p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="jumbotron">
+  <h1 class="display-4">Your Saved Posts!</h1>
+  <p class="lead">All your favorite posts, saved in one place. Add notes or delete!</p>
+  <hr class="my-4">
+</div>
+<div id="results" class="container">
+  {{!-- Results go here --}}
+  {{#if saved}}
+    {{#each saved}}
+        <div class="row res-item">
+          <div class="col-sm-8">{{title}}</div>
+          <div class="col-sm-4">
+            <a class="btn btn-primary" href="{{link}}" target="_blank">Link</a>
+            <button class="btn btn-primary give-space" data-title="{{title}}">Save!</button>
+          </div>
+        </div>
+    {{/each}}
+  {{else}}
+    <div class="row">
+      <h1 class="nothing">You haven't saved anything!</h1>
+    </div>
+  {{/if}}
+</div>
+
+<link href="./stylesheets/home.css" rel="stylesheet">
+<script type="text/javascript" src="./js/postsjs"></script>

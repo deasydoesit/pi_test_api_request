@@ -13,3 +13,18 @@
 .center-content {
     text-align: center;
 }
+
+.res-item {
+    padding: 10px 0;
+    text-align: center;
+    margin-top: 15px;
+    background: lavender;
+}
+
+.give-space {
+    margin-left: 10px;
+}
+
+.nothing {
+    margin: 75px auto;
+}
