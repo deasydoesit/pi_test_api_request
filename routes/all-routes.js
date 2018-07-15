@@ -25,7 +25,7 @@ module.exports = function(app) {
     
     app.get("/posts", function(req, res) { 
 
-        db.Post.findAll({})
+        db.Post.find({"saved": true})
         .then(function(dbSaved) {
             res.render("posts", {"saved": dbSaved});
         })
@@ -82,12 +82,21 @@ module.exports = function(app) {
         console.log(req.body);
         db.Post.findOneAndUpdate(req.body, {$set: {saved: true}})
         .then(function() {
-            // If the User was updated successfully, send it back to the client
             res.send("Saved");
           })
         .catch(function(err) {
-            // If an error occurs, send it back to the client
             res.json(err);
         });
     });
+
+    app.delete("/api/delete", function(req, res) {
+        console.log(req.body);
+        db.Post.remove(req.body)
+        .then(function() {
+            res.send("Deleted");
+          })
+        .catch(function(err) {
+            res.json(err);
+        });
+    })
 }

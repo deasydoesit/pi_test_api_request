@@ -11,17 +11,17 @@
     </ul>
   </div>
 </nav>
-<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="scraped" aria-hidden="true">
+<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="deleted" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="scraped">Scraped Posts!</h5>
+        <h5 class="modal-title" id="deleted">Deleted Post!</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body center-content">
-        <p id="modal-para"></p>
+        <p id="modal-delete"></p>
       </div>
     </div>
   </div>
@@ -54,7 +54,8 @@
           <div class="col-sm-8">{{title}}</div>
           <div class="col-sm-4">
             <a class="btn btn-primary" href="{{link}}" target="_blank">Link</a>
-            <button class="btn btn-primary give-space" data-title="{{title}}">Save!</button>
+            <button class="btn btn-warning give-space note" data-title="{{title}}">Add Note</button>
+            <button class="btn btn-danger give-space delete" data-title="{{title}}">Delete</button>
           </div>
         </div>
     {{/each}}
@@ -66,4 +67,4 @@
 </div>
 
 <link href="./stylesheets/home.css" rel="stylesheet">
-<script type="text/javascript" src="./js/postsjs"></script>
+<script type="text/javascript" src="./js/posts.js"></script>
