@@ -16,7 +16,7 @@ module.exports = function(app) {
 
         axios.get("https://old.reddit.com/" + req.body.url + "/") //axios request based on submitted subreddit
         .then(function(response) {
-
+            console.log(response);
             var returnToClient = [] //this array will ultimately copy the scraped data for return to client
 
             var $ = cheerio.load(response.data);
